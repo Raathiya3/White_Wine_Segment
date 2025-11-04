@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YOLO Segmentation App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; text-align: center; }
+        input, button { margin: 10px; padding: 10px; font-size: 16px; }
+        img { margin-top: 20px; max-width: 70%; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Pantry White Wines Inventory Detection</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required><br>
+        <input type="email" name="email" placeholder="Enter your email" required><br>
+        <button type="submit">Run Detection</button>
+    </form>
+
+    {% if result_img %}
+        <h2>Detected Results</h2>
+        <!--<img src="{{ result_img }}" alt="Annotated result"><br>-->
+
+        <h3>Class Counts:</h3>
+        <ul>
+            {% for cls, count in counts.items() %}
+                <li>{{ cls }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
